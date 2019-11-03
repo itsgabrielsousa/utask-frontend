@@ -1,13 +1,21 @@
-* {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    box-sizing: border-box;
-    outline: 0;
-}
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i&display=swap');
 
 body {
 	background-color: rgb(245, 245, 245);
     font-family: 'Raleway', Tahoma, sans-serif;
 	color: #393939;
+}
+
+/* Header #main-header */
+header#main-header {
+	display: table;
+	margin: 0 auto;
+	margin-top: 4%;
+}
+
+header#main-header h1 {
+	font-size: 2.8525rem;
+	font-weight: 500;
+	text-align: center;
 }

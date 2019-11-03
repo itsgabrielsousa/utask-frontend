@@ -1,0 +1,44 @@
+form#container-new-task {
+    position: relative;
+	width: 280px;
+	margin-top: 7%;
+	display: flex;
+}
+
+form#container-new-task label { display: none; }
+
+form#container-new-task input#taskName {
+    width: 238px;
+	height: 42px;
+
+	box-sizing: border-box;
+	border-radius: 6px;
+	border: 2px solid rgb(228, 228, 228);
+	font-size: 0.9375rem;
+	line-height: 2.5rem;
+	padding-left: 0.9375rem;
+	font-family: inherit;
+
+	transition: 200ms;
+}
+
+/* Efeito de sombra quando input ter foco */
+input#taskName:focus {
+    outline: none;
+    border: 2px solid rgba(55,113,200,0.7);
+    box-shadow: 0 0 8px 2px rgba(55,113,200,0.25);
+}
+
+/* Estilo do botao de add  */
+form#container-new-task #btn-add-task {
+	position: absolute;/* garante que o btn sempre esteja ao lado do input */
+	right: 0;/* faz com que o btn sempre tenha 12px de espaco entre o input */
+	width: 32px;
+	height: 42px;/* altura do btn precisa ser igual a altura do input */
+	border: none;/* remove button standard style */
+
+	background: url('../../assets/icons/add-regular.png') no-repeat 50% 50% transparent;
+	background-size: 32px 32px;
+	cursor: pointer;
+	transition: 100ms;
+}
