@@ -1,0 +1,53 @@
+/* list and list items */
+ul.task-list {
+	margin-top: 2.2rem;
+}
+
+/* class added by JS for when the card is empty */
+ul.task-list-empty::before {
+	content: "Tudo vazio por aqui :)";
+	line-height: 5;
+	color: rgb(170, 170, 170);
+	text-decoration: solid;
+}
+
+ul.task-list li {
+	display: table;
+	margin: 0 auto;
+	padding: 10px 14px;
+	border-radius: 50px;
+
+	text-align: center;
+	list-style: none;
+	word-break: break-all;
+
+	background-size: 18px 13px;
+	background-repeat: no-repeat;
+	background-position: 90% center;
+
+	cursor: pointer;
+	transition: all 0.2s ease;
+
+	animation: fadeOut 500ms ease;
+}
+
+ul.task-list li:hover {
+	padding-right: 35px;
+	background-position: 95% center;
+	background-color: rgb(240, 240, 240);
+}
+
+/* change the li bg color when active */
+ul.task-list li:active { background-color: rgb(235, 235, 235); }
+
+/* add a specific icon for each card */
+#card-todo ul.task-list li:hover { background-image: url('../../assets/icons/right-arrow-done.png'); }
+#card-doing ul.task-list li:hover { background-image: url('../../assets/icons/right-arrow-doing.png'); }
+#card-done ul.task-list li:hover { background-image: url('../../assets/icons/close.png'); }
+
+/* color of the border bottom of each card title */
+#card-todo div.card-title { border-bottom-color: rgba(255, 47, 99, 0.5); }
+#card-doing div.card-title { border-bottom-color: rgba(253, 177, 115, 0.5); }
+#card-done div.card-title { border-bottom-color: rgba(0, 200, 200, 0.5); }
+
+div#card-done ul li { text-decoration: line-through; }

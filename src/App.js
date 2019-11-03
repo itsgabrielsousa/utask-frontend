@@ -1,5 +1,6 @@
 import React from 'react';
 import AddTask from './components/AddTask'
+import Tasks from './components/Tasks'
 
 import './style.css'
 
@@ -47,6 +48,22 @@ class App extends React.Component {
           
           <AddTask addTask={this.addTask} />
         </header>
+
+        <div id="interface">
+          <section id="container-cards">
+            {/* CARD TO DO */}
+            <div id="card-todo" className="cards">
+              <div className="inner-card">
+                <div className="card-title">
+                  <h2>To Do</h2>
+                </div>
+
+                {/* returns an UL .task-list filled with the tasks items as LIs */}
+                <Tasks tasks={this.state.tasksTODO} />
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
     );
   }
