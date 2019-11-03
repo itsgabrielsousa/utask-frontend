@@ -23,7 +23,13 @@ form#container-new-task input#taskName {
 }
 
 /* Efeito de sombra quando input ter foco */
-input#taskName:focus {
+form#container-new-task input#taskName:focus {
+    outline: none;
+    border: 2px solid rgba(55,113,200,0.7);
+    box-shadow: 0 0 8px 2px rgba(55,113,200,0.25);
+}
+
+form#container-new-task input#taskName:focus-visible {
     outline: none;
     border: 2px solid rgba(55,113,200,0.7);
     box-shadow: 0 0 8px 2px rgba(55,113,200,0.25);
@@ -42,3 +48,6 @@ form#container-new-task #btn-add-task {
 	cursor: pointer;
 	transition: 100ms;
 }
+/* btn on mouse over and on click */
+form#container-new-task #btn-add-task:hover { background: url('../../assets/icons/add-solid.png') no-repeat 50% 50% transparent; }
+form#container-new-task #btn-add-task:active { transform: scale(0.9); }

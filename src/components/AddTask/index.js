@@ -18,14 +18,20 @@ class AddTask extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    this.props.addTask(this.state)
+
+    const input = document.getElementById('taskName')
+    if (input.value.trim()) {
+      this.props.addTask(this.state)
+      input.value = ''
+      input.focus()
+    }
   }
-  
+
   render() {
     return (
       <form id="container-new-task" onSubmit={this.handleSubmit}>
         <label htmlFor="taskName">Task name:</label>
-        <input type="text" id="taskName" onChange={this.handleChange}></input>
+        <input type="text" id="taskName" onChange={this.handleChange} placeholder="Adicione uma tarefa"></input>
 
         <button id="btn-add-task"></button>
       </form>

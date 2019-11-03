@@ -62,6 +62,30 @@ class App extends React.Component {
                 <Tasks tasks={this.state.tasksTODO} />
               </div>
             </div>
+
+            {/* CARD DOING */}
+            <div id="card-doing" className="cards">
+              <div className="inner-card">
+                <div className="card-title">
+                  <h2>Doing</h2>
+                </div>
+
+                {/* returns an UL .task-list filled with the tasks items as LIs */}
+                <Tasks tasks={this.state.tasksDOING} />
+              </div>
+            </div>
+
+            {/* CARD DONE */}
+            <div id="card-done" className="cards">
+              <div className="inner-card">
+                <div className="card-title">
+                  <h2>Done</h2>
+                </div>
+
+                {/* returns an UL .task-list filled with the tasks items as LIs */}
+                <Tasks tasks={this.state.tasksDONE} />
+              </div>
+            </div>
           </section>
         </div>
       </div>
