@@ -19,3 +19,75 @@ header#main-header h1 {
 	font-weight: 500;
 	text-align: center;
 }
+
+/* Interface */
+div#interface {
+	width: 70%;
+	min-width: 57.1875rem; /* keep it from being less than 915px in screen bigger than 1366px */
+	max-width: 1100px;
+	margin: 4% auto 0 auto;
+}
+
+/* style for the general container that surrounds the all the cards */
+section#container-cards {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+/* styles for all the cards */
+section#container-cards .cards {
+	width: 17.5rem;
+	height: 100%;
+	min-height: 17.5rem;
+	margin-bottom: 1.5rem;
+
+	background-color: white;
+	box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+	border-radius: 10px;
+
+	transition: box-shadow 300ms;
+}
+
+/* increase card shadow on mouse over the card */
+section#container-cards .cards:hover { box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.25); }
+
+/* classes added by JS qhen the card is empty */
+/* change the box-shadow nd zero it on mouse over */
+section#container-cards .cards-vazio { box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15); }
+section#container-cards .cards-vazio:hover { box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15); }
+
+/* div that surrounds the card title and ul */
+.cards .inner-card {
+	display: table;
+	max-width: 95%;
+	margin: 1.25rem auto 3.125rem auto;
+}
+
+/* cards title h2 */
+.inner-card div.card-title {
+	width: 5rem;
+	margin: 0 auto;
+	padding: 1.25rem 0;
+	padding-bottom: 1.875rem;
+	border-bottom: 2pt solid #393939;
+}
+
+.card-title h2 {
+	font-size: 1.5rem;
+	font-weight: 500;
+	text-align: center;
+}
+
+/* Animations */
+@keyframes fadeOut {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

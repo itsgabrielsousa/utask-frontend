@@ -19,7 +19,7 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 	/* remover linha abaixo depois da estrutura*/
-	border: 1px solid rgba(0,0,0,0.7);
+	/* border: 1px solid rgba(0,0,0,0.7); */
 }
 
 html {
