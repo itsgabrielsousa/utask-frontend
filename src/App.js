@@ -6,38 +6,92 @@ import './style.css'
 
 class App extends React.Component {
   state = {
-    tasksTODO: [
-      { taskName: 'Fazer upload no GitLab', id: 1 },
-      { taskName: 'Criar layout novo', id: 2 },
-      { taskName: 'Fazer planejamento', id: 3 }
-    ],
-    tasksDOING: [
-      { taskName: 'Test the app', id: 1 },
-      { taskName: 'Go shopping', id: 2 },
-    ],
-    tasksDONE: [
-      { taskName: 'Develop new form', id: 1 },
-      { taskName: 'Cycle throgh a list', id: 2 },
-      { taskName: 'Reack is awesome', id: 3 }
-    ]
+    idNumber: 0,// global property that controls the value of the id's
+    tasksTODO: [],
+    tasksDOING: [],
+    tasksDONE: []
+  }
+
+  idGenerator = (task, letterCode) => {
+    // format: x = for card-todo, y = card-doing, z = card-done + idNumber => x0, x1, ..., xN
+    task.id = letterCode + this.state.idNumber
+
+    // increment idNumber value by 1
+    this.setState({
+      idNumber: this.state.idNumber + 1
+    })
   }
 
   // used to communicate from child to parent
   // change the state of parent based on the new task coming from the child (./AddTask)
-  addTask = (newTask) => {
+  addTask = (task, letterCode) => {
     // generate a different ID every time
-    newTask.id = Math.random()
+    this.idGenerator(task, letterCode)
 
     // the right way to change the state in this case is to:
     // first, create a copy of the current array, so we are not editing it
-    // second, add the newTask to the copy of that array
+    // second, add the task to the copy of that array
     // third, and then take that new array and asign to this thing below
     // this way, we will be changing the state INSIDE the setState method and that is good practice
-    let tasksTODO = [...this.state.tasksTODO, newTask]
+    let tasksTODO = [...this.state.tasksTODO, task]
 
     this.setState({
       tasksTODO: tasksTODO
     })
+  }
+
+  // change the task from one card to the other, or remove if it is the last one
+  changeTaskCard = (id) => {
+    let newTask = null
+
+    if (id[0] === 'x') {
+      console.log('todo -> doing')
+      // filter out the task with the corresponding id at the origin card
+      let tasksTODO = this.state.tasksTODO.filter(task => {
+        // get the task name based on the id
+        if (task.id === id) {
+          newTask = task
+        }
+        return task.id !== id
+      })
+      // add the task to the correct card with the new card id, which in this case is DOING
+      this.idGenerator(newTask, 'y')
+      // create new array with the newly added task
+      let tasksDOING = [...this.state.tasksDOING, newTask]
+      // update state of the cards that were modified
+      this.setState({
+        tasksTODO: tasksTODO,
+        tasksDOING: tasksDOING
+      })
+    }
+    else if (id[0] === 'y') {
+      console.log('doing -> done')
+      // filter out the task with the corresponding id at the origin card
+      let tasksDOING = this.state.tasksDOING.filter(task => {
+        // get the task name based on the id
+        if (task.id === id) {
+          newTask = task
+        }
+        return task.id !== id
+      })
+      // add the task to the correct card with the new card id, which in this case is DOING
+      this.idGenerator(newTask, 'z')
+      // create new array with the newly added task
+      let tasksDONE = [...this.state.tasksDONE, newTask]
+      // update state of the cards that were modified
+      this.setState({
+        tasksDOING: tasksDOING,
+        tasksDONE: tasksDONE
+      })
+    }
+    else if (id[0] === 'z') {
+      // filter out the task with the corresponding id
+      let tasksDONE = this.state.tasksDONE.filter(task => { return task.id !== id })
+
+      this.setState({
+        tasksDONE: tasksDONE
+      })
+    }
   }
 
   render() {
@@ -59,7 +113,7 @@ class App extends React.Component {
                 </div>
 
                 {/* returns an UL .task-list filled with the tasks items as LIs */}
-                <Tasks tasks={this.state.tasksTODO} />
+                <Tasks changeTaskCard={this.changeTaskCard} tasks={this.state.tasksTODO} />
               </div>
             </div>
 
@@ -71,7 +125,7 @@ class App extends React.Component {
                 </div>
 
                 {/* returns an UL .task-list filled with the tasks items as LIs */}
-                <Tasks tasks={this.state.tasksDOING} />
+                <Tasks changeTaskCard={this.changeTaskCard} tasks={this.state.tasksDOING} />
               </div>
             </div>
 
@@ -83,7 +137,7 @@ class App extends React.Component {
                 </div>
 
                 {/* returns an UL .task-list filled with the tasks items as LIs */}
-                <Tasks tasks={this.state.tasksDONE} />
+                <Tasks changeTaskCard={this.changeTaskCard} tasks={this.state.tasksDONE} />
               </div>
             </div>
           </section>

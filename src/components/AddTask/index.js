@@ -21,7 +21,7 @@ class AddTask extends React.Component {
 
     const input = document.getElementById('taskName')
     if (input.value.trim()) {
-      this.props.addTask(this.state)
+      this.props.addTask(this.state, 'x')
       input.value = ''
       input.focus()
     }

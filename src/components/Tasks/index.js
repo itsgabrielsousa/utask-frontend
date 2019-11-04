@@ -5,7 +5,7 @@ import './style.css'
 const Tasks = (props) => {
   // destructuring
   // could be more variables like { name, age, belt } = props
-  const { tasks } = props
+  const { tasks, changeTaskCard } = props
 
   // How to loop through data? 
   // We get the origial array, which is 'tasks' (coming from this.props.tasks)
@@ -16,7 +16,9 @@ const Tasks = (props) => {
   // and finally, we output the 'taskList' at the div.task-list
   const taskList = tasks.map(task => {
     return (
-      <li key={task.id}>{ task.taskName }</li>
+      <li onClick={() => {changeTaskCard(task.id)}} key={task.id}>
+        { task.taskName }
+      </li>
     )
   })
 
